@@ -407,3 +407,159 @@ body {
 .mode-btn.active:hover {
     background-color: #3e8e41;
 }
+
+nav a {
+    margin-right: 15px;
+    color: #333;
+}
+nav a.active {
+    color: #3e8e41;
+    font-weight: bold;
+}
+
+/* Основные стили для body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+
+/* Стили для навбара */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.navbar-brand i {
+    margin-right: 10px;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    padding: 8px 15px !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+}
+
+.nav-link i {
+    margin-right: 5px;
+}
+
+/* Стили для активной ссылки */
+.nav-link.active {
+    font-weight: bold;
+    position: relative;
+}
+
+.nav-link.active:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 2px;
+    background: white;
+}
+
+/* Стили для основного контента */
+main.container {
+    min-height: calc(100vh - 200px); /* Чтобы футер был внизу */
+    padding-bottom: 50px;
+}
+
+/* Стили для футера */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+footer i.fa-heart {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        padding-top: 15px;
+    }
+    
+    .nav-link {
+        padding: 10px 15px !important;
+    }
+    
+    body {
+        padding-top: 10px;
+    }
+}
+
+/* Дополнительные стили для форм (если используете) */
+.form-control:focus {
+    border-color: #3e8e41;
+    box-shadow: 0 0 0 0.25rem rgba(0,123,255,0.25);
+}
+
+.btn-primary {
+    background-color: #3e8e41;
+    border-color: #3e8e41;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41;
+    border-color: #3e8e41;
+    transform: translateY(-2px);
+}
+
+/* Цвет навбара и его элементов */
+.navbar {
+    background-color: #3e8e41 !important; /* Основной цвет */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Цвет бренда/логотипа */
+.navbar-brand {
+    color: white !important;
+}
+
+/* Цвет ссылок */
+.nav-link {
+    color: rgba(255,255,255,0.85) !important;
+}
+
+.nav-link:hover {
+    color: white !important;
+    transform: translateY(-1px);
+}
+
+/* Активная ссылка */
+.nav-link.active {
+    color: white !important;
+    font-weight: 500;
+}
+
+/* Цвет кнопки "гамбургера" на мобильных */
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.5) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}

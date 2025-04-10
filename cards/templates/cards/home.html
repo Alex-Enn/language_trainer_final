@@ -1,74 +1,31 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Языковой тренажёр</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1><i class="fas fa-language"></i> Языковой тренажёр</h1>
-            <nav>
-                <a href="{% url 'home' %}" class="active"><i class="fas fa-home"></i> Главная</a>
-                <a href="{% url 'add_card' %}"><i class="fas fa-plus-circle"></i> Добавить карточку</a>
-                <a href="{% url 'card_list' %}"><i class="fas fa-list"></i> Все карточки</a>
-                <a href="{% url 'practice' %}"><i class="fas fa-dumbbell"></i> Тренировка</a>
-            </nav>
-        </div>
-    </header>
-    
-    <main class="container">
-        <section class="hero">
-            <h2>Добро пожаловать в языковой тренажёр!</h2>
-            <p>Эффективный способ запоминания иностранных слов с помощью карточек. Создавайте свои наборы, тренируйтесь ежедневно и расширяйте словарный запас.</p>
-            
-            <div class="action-buttons">
-                <a href="{% url 'practice' %}" class="action-btn primary-btn">
-                    <i class="fas fa-play"></i> Начать тренировку
-                </a>
-                <a href="{% url 'add_card' %}" class="action-btn secondary-btn">
-                    <i class="fas fa-plus"></i> Добавить карточки
-                </a>
-            </div>
-        </section>
+
+{% block content %}
+    <section class="hero">
+        <h2>Добро пожаловать в языковой тренажёр!</h2>
+        <p>Эффективный способ запоминания иностранных слов с помощью карточек.</p>
         
-        <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3>Эффективное обучение</h3>
-                <p>Метод интервального повторения помогает лучше запоминать слова</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-images"></i>
-                </div>
-                <h3>Визуальные ассоциации</h3>
-                <p>Иллюстрации помогают создавать прочные ассоциации</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-user-cog"></i>
-                </div>
-                <h3>Персонализация</h3>
-                <p>Создавайте свои собственные наборы карточек</p>
-            </div>
-        </section>
-        
-        {% block content %}{% endblock %}
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>© 2025 Языковой тренажёр | Разработано с <i class="fas fa-heart" style="color: #f44336;"></i> для изучающих языки</p>
+        <div class="action-buttons">
+            <a href="{% url 'practice' %}" class="action-btn primary-btn">
+                <i class="fas fa-play"></i> Начать тренировку
+            </a>
+            <a href="{% url 'add_card' %}" class="action-btn secondary-btn">
+                <i class="fas fa-plus"></i> Добавить карточки
+            </a>
         </div>
-    </footer>
-</body>
-</html>
+    </section>
+    
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-brain"></i>
+            <h3>Эффективное обучение</h3>
+            <p>Метод интервального повторения</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-images"></i>
+            <h3>Визуальные ассоциации</h3>
+            <p>Карточки с иллюстрациями</p>
+        </div>
+    </section>
+{% endblock %}

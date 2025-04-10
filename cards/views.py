@@ -10,9 +10,10 @@ def add_card(request):
         form = CardForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('card_list')
+            return redirect('card_list')  
     else:
         form = CardForm()
+    
     return render(request, 'cards/add_card.html', {'form': form})
 
 def card_list(request):

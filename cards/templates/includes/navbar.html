@@ -1,0 +1,41 @@
+<!-- cards/templates/includes/navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container">
+        <!-- Бренд/логотип -->
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <i class="fas fa-language me-2"></i>Языковой тренажёр
+        </a>
+        
+        <!-- Кнопка для мобильных -->
+        <button class="navbar-toggler" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" 
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Основное меню -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/add_card/' %}active{% endif %}" 
+                       href="{% url 'add_card' %}">
+                        <i class="fas fa-plus-circle me-1"></i> Добавить карточку
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/card_list/' %}active{% endif %}" 
+                       href="{% url 'card_list' %}">
+                        <i class="fas fa-list me-1"></i> Все карточки
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/practice/' %}active{% endif %}" 
+                       href="{% url 'practice' %}">
+                        <i class="fas fa-dumbbell me-1"></i> Тренировка
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
