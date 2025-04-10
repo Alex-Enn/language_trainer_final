@@ -2,39 +2,54 @@
 {% load static %}
 
 {% block content %}
-<h2>Все карточки</h2>
-<table class="cards-table">
-    <thead>
-        <tr>
-            <th class="text-center">Слово на английском</th>
-            <th class="text-center">Иллюстрация</th>
-            <th class="text-center">Перевод с английского</th>
-            <th class="text-center">Действия</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for card in cards %}
-        <tr>
-            <td class="text-center">{{ card.word }}</td>
-            <td class="text-center"><img src="{{ card.image.url }}" width="100"></td>
-            <td class="text-center">{{ card.translation }}</td>
-            <td class="text-center">
-                <form action="{% url 'delete_card' card.id %}" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="delete-btn" onclick="return confirm('Удалить эту карточку?')">
-                        <i class="fas fa-trash-alt"></i> Удалить
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endblock %}  <!-- Закрываем основной блок content -->
+<div class="container mt-4">
+    <h2>Все карточки</h2>
+    <div class="table-responsive">
+        <table class="table table-hover cards-table">
+            <thead class="table-light">
+                <tr>
+                    <th class="text-center">Слово на английском</th>
+                    <th class="text-center">Иллюстрация</th>
+                    <th class="text-center">Перевод с английского</th>
+                    <th class="text-center">Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for card in cards %}
+                <tr>
+                    <td class="text-center align-middle">{{ card.word }}</td>
+                    <td class="text-center align-middle">
+                        {% if card.image %}
+                        <img src="{{ card.image.url }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
+                        {% else %}
+                        <span class="text-muted">Нет изображения</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-center align-middle">{{ card.translation }}</td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="{% url 'edit_card' card.id %}" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-edit"></i> Редактировать
+                            </a>
+                            <form action="{% url 'delete_card' card.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Удалить эту карточку?')">
+                                    <i class="fas fa-trash-alt"></i> Удалить
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
 
 {% block extra_js %}
 <script>
-document.querySelectorAll('.delete-btn').forEach(btn => {
+document.querySelectorAll('.btn-outline-danger').forEach(btn => {
     btn.addEventListener('click', (e) => {
         if (!confirm('Вы уверены, что хотите удалить эту карточку?')) {
             e.preventDefault();

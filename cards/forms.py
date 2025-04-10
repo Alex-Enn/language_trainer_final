@@ -17,3 +17,7 @@ class CardForm(forms.ModelForm):
             'image': 'Иллюстрация',
             'translation': 'Перевод',
         }
+        widgets = {
+            'word': forms.TextInput(attrs={'class': 'form-control'}),
+            'translation': forms.TextInput(attrs={'class': 'form-control'}),
+        }

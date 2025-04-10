@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Card
 from .forms import CardForm 
+from django.views.decorators.http import require_POST
 
 def home(request):
     return render(request, 'cards/home.html')
@@ -29,3 +30,14 @@ def delete_card(request, card_id):
     if request.method == 'POST':
         card.delete()
     return redirect('card_list')
+
+def edit_card(request, card_id):
+    card = get_object_or_404(Card, id=card_id)
+    if request.method == 'POST':
+        form = CardForm(request.POST, request.FILES, instance=card)
+        if form.is_valid():
+            form.save()
+            return redirect('card_list')
+    else:
+        form = CardForm(instance=card)
+    return render(request, 'cards/edit_card.html', {'form': form})
