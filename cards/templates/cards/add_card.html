@@ -1,0 +1,14 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+<div class="card-form-container">
+    <h2 class="text-center">Добавить новую карточку</h2>
+    <form method="post" enctype="multipart/form-data" class="card-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Сохранить</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

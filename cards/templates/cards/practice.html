@@ -1,0 +1,79 @@
+{% extends 'cards/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Тренировка</h2>
+
+<div class="mode-switcher">
+    <button id="engToRus" class="mode-btn active">Английский → Русский</button>
+    <button id="rusToEng" class="mode-btn">Русский → Английский</button>
+</div>
+
+<div class="flashcards-container">
+    {% for card in cards %}
+    <div class="flashcard" data-word="{{ card.word }}" data-translation="{{ card.translation }}" data-image="{{ card.image.url }}">
+        <div class="flashcard-inner">
+            <div class="flashcard-front">
+                <div class="flashcard-content">{{ card.word }}</div>
+            </div>
+            <div class="flashcard-back">
+                <div class="flashcard-content">
+                    <img src="{{ card.image.url }}" alt="{{ card.word }}">
+                    <p>{{ card.translation }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function flipCard(element) {
+    element.classList.toggle('flipped');
+}
+
+document.querySelectorAll('.flashcard').forEach(card => {
+    card.addEventListener('click', () => {
+        flipCard(card);
+    });
+});
+
+// Переключение режимов тренировки
+const engToRusBtn = document.getElementById('engToRus');
+const rusToEngBtn = document.getElementById('rusToEng');
+
+function switchMode(isEngToRus) {
+    document.querySelectorAll('.flashcard').forEach(card => {
+        const word = card.dataset.word;
+        const translation = card.dataset.translation;
+        const image = card.dataset.image;
+        
+        const frontContent = card.querySelector('.flashcard-front .flashcard-content');
+        const backContent = card.querySelector('.flashcard-back .flashcard-content');
+        
+        if (isEngToRus) {
+            // Режим Английский → Русский
+            frontContent.textContent = word;
+            backContent.innerHTML = `<img src="${image}" alt="${word}"><p>${translation}</p>`;
+        } else {
+            // Режим Русский → Английский
+            frontContent.textContent = translation;
+            backContent.innerHTML = `<img src="${image}" alt="${translation}"><p>${word}</p>`;
+        }
+        
+        // Сбрасываем состояние переворота
+        card.classList.remove('flipped');
+    });
+    
+    // Обновляем активную кнопку
+    engToRusBtn.classList.toggle('active', isEngToRus);
+    rusToEngBtn.classList.toggle('active', !isEngToRus);
+}
+
+engToRusBtn.addEventListener('click', () => switchMode(true));
+rusToEngBtn.addEventListener('click', () => switchMode(false));
+
+// Инициализация в режиме Английский → Русский
+switchMode(true);
+</script>
+{% endblock %}
