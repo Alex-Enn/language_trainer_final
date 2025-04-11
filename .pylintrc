@@ -1,2 +1,6 @@
 [MASTER]
 ignore=venv,migrations
+load-plugins=pylint_django
+
+[DJANGO]
+django-settings-module=language_trainer.settings
