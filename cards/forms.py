@@ -36,7 +36,7 @@ class CardForm(forms.ModelForm):
             }),
         }
         help_texts = {
-            'image': 'Загрузите изображение (необязательно)',
+            'image': 'Загрузите изображение',
         }
 
     def clean(self):
