@@ -44,7 +44,7 @@ source venv/bin/activate  # Для Linux/Mac
 venv\Scripts\activate     # Для Windows
 ```
 
-3 Установите библиотеки:
+3. Установите библиотеки:
 ```bash
 pip install -r requirements.txt
 ```
