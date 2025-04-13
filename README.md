@@ -49,10 +49,9 @@ venv\Scripts\activate     # Для Windows
 pip install -r requirements.txt
 ```
 
-4. Настройте SECRET_KEY:
-   Откройте файл settings.py и установите свой SECRET_KEY:
+4. Создайте файл `.env` и установите свой SECRET_KEY:
 ```bash
-SECRET_KEY = 'ваш_секретный_ключ'
+SECRET_KEY='ваш_секретный_ключ'
 ```
 
 5. Примените миграции:
